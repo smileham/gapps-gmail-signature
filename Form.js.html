@@ -1,0 +1,80 @@
+<script>
+  function updateData() {
+    console.log("Update");
+    var theJobTitle = document.getElementById("jobTitleField").value;
+    var theDept = document.getElementById("departmentField").value;
+    var theLocation = document.getElementById("locationField").value;
+    var theAddress = document.getElementById("addressField").value;
+    var thePhoneNumber = document.getElementById("phoneNumberField").value;
+
+    document.getElementById("jobTitle").innerHTML = theJobTitle;
+    document.getElementById("department").innerHTML = theDept;
+    document.getElementById("location").innerHTML = theLocation;
+    document.getElementById("address").innerHTML = theAddress;
+    document.getElementById("phoneNumber").innerHTML = thePhoneNumber;
+  }
+
+  function submitData() {
+    updateData();
+    var theHtml = document.getElementById("sig").innerHTML;
+
+    block();
+    google.script.run
+      .withSuccessHandler(success)
+      .withFailureHandler(showError)
+      .setSignature(theHtml);
+  }
+
+  function changeStyle() {
+    var styleField = document.getElementById("styleField");
+    var style = styleField.options[styleField.selectedIndex].text;
+
+    if (style == "Round") {
+      document.getElementById("photoUrl").style.cssText =
+        "display:block; border-radius: 50%";
+    } else {
+      document.getElementById("photoUrl").style.cssText =
+        "display:block; border-radius: 5%";
+    }
+  }
+
+  function bindButtons() {
+    document
+      .getElementById("submitButton")
+      .addEventListener("click", function() {
+        submitData();
+        return false;
+      });
+    document
+      .getElementById("updateButton")
+      .addEventListener("click", function() {
+        updateData();
+        return false;
+      });
+    document
+      .getElementById("styleField")
+      .addEventListener("change", function() {
+        changeStyle();
+      });
+  }
+
+  function block() {
+    document.getElementById("busy").className = "block";
+  }
+
+  function unBlock() {
+    document.getElementById("busy").className = "available";
+  }
+
+  function success(payload) {
+    document.getElementById("outcome").innerHTML =
+      "<h1>Signature updated, please refresh Gmail tab.</h1>";
+    unBlock();
+  }
+  function showError(e) {
+    document.getElementById("outcome").innerHTML = "<h1>Error" + e + "</h1>";
+    unBlock();
+  }
+
+  bindButtons();
+</script>
