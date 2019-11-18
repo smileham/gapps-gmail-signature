@@ -15,28 +15,28 @@
     <div id="form">
       <div class="column1">
         <label>Job Title</label
-        ><input type="text" id="jobTitleField" class="field" /><br />
+        ><input type="text" id="jobTitleField" class="field" value="<?=jobTitle?>" /><br />
         <label>Department</label
-        ><input type="text" id="departmentField" class="field" /><br />
+        ><input type="text" id="departmentField" class="field" value="<?=dept?>" /><br />
         <label>Location</label
         ><input
           type="text"
           id="locationField"
-          value=""
+          value="<?=location?>"
           class="field"
         /><br />
         <label>Address</label
         ><input
           type="text"
           id="addressField"
-          value=""
+          value="<?=address?>"
           class="field"
         /><br />
         <label>Phone Number</label
         ><input
           type="text"
           id="phoneNumberField"
-          value=""
+          value="<?=phoneNumber?>"
           class="field"
         /><br />
 
@@ -72,13 +72,13 @@
                   >
                     <?=userName?>
                   </div>
-                  <div style="font-weight:bold" id="jobTitle">{Job Title}</div>
-                  <span id="department">{Dept}</span><br />
-                  <span id="location">{Location}</span><br />
-                  <span id="address">{Address}</span><br />
+                  <div style="font-weight:bold" id="jobTitle"><?=jobTitle?></div>
+                  <span id="department"><?=dept?></span><br />
+                  <span id="location"><?=location?></span><br />
+                  <span id="address"><?=address?></span><br />
                 </address>
                 <div style="display:inline-block">
-                  Tel: <span id="phoneNumber">{Phone Number}</span>
+                  Tel: <span id="phoneNumber"><?=phoneNumber?></span>
                 </div>
               </td>
             </tr>
@@ -89,10 +89,10 @@
       <!--/column2-->
       <div class="spacer"></div>
       <div class="column1">
-        <button id="updateButton" class="primary">Update</button>
+        <button id="updateButton" class="primary">Update Preview</button>
       </div>
       <div class="column2">
-        <button id="submitButton" class="warning">Submit</button>
+        <button id="submitButton" class="warning">Set New Signature</button>
       </div>
       <div class="spacer"></div>
     </div>
